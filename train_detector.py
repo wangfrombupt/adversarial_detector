@@ -8,7 +8,8 @@ import os
 import matplotlib.pyplot as plt
 
 from torch.utils.data import DataLoader, TensorDataset
-from models.text_cnn import Text_CNN
+from models.resnet_detector import Text_CNN_ResNet
+from models.inception_detector import Text_CNN_Inception
 from sklearn.metrics import roc_auc_score, roc_curve
 from lib.average_meter import AverageMeter
 
@@ -153,7 +154,12 @@ def main():
         args.num_classes = 100
 
     # load networks
-    classifier = models.ResNet34(num_c=args.num_classes)
+    if args.net_type == 'resnet':
+        classifier = models.ResNet34(num_c=args.num_classes)
+        detector = Text_CNN_ResNet().cuda()
+    else:
+        classifier = models.inceptionv3()
+        detector = Text_CNN_Inception().cuda()
     classifier.load_state_dict(torch.load(pre_trained_net, map_location="cpu"))
     classifier.cuda()
     print('load model: ' + args.net_type)
@@ -165,7 +171,6 @@ def main():
     if not os.path.isdir("./trained_detector/"):
         os.mkdir("./trained_detector/")
 
-    detector = Text_CNN().cuda()
     criterion = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(detector.parameters(), lr=0.0001)
     epoch = 10

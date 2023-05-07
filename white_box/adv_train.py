@@ -12,7 +12,7 @@ import torch.nn as nn
 from torchvision import transforms
 from torch.utils.data import DataLoader, TensorDataset
 from itertools import cycle
-from models.text_cnn import Text_CNN
+from models.resnet_detector import Text_CNN
 from lib.adversary import PGD
 from lib.average_meter import AverageMeter
 

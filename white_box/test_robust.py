@@ -9,7 +9,7 @@ import data_loader
 
 from torchvision import transforms
 from torch.utils.data import DataLoader, TensorDataset
-from models.text_cnn import Text_CNN
+from models.resnet_detector import Text_CNN
 from lib.adversary import PGD
 from lib.average_meter import AverageMeter
 
