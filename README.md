@@ -12,10 +12,12 @@ We use the following two libraries to generate adversarial examples.
 * [Foolbox](https://github.com/bethgelab/foolbox)
 
 ## Training Classifier
-we train ResNet-34 on CIFAR-10, CIFAR-100 and SVHN.
+we train ResNet-34 and InceptionV3 on CIFAR-10, CIFAR-100 and SVHN.
 ```
 # model: ResNet-34, dataset: CIFAR-10, gpu: 0
 python train.py --dataset cifar10 --net_type resnet --gpu 0
+# model: InceptionV3, dataset: CIFAR-10, gpu: 0
+python train.py --dataset cifar10 --net_type inception --gpu 0
 ```
 
 ## Detecting Adversarial Samples
@@ -32,7 +34,12 @@ python adv_generate.py --dataset cifar10 --net_type resnet --adv_type FGSM --gpu
 python train_detector.py --dataset cifar10 --adv_type FGSM --gpu 0
 ```
 
+### 2. Visualization
+```
+python tsne.py --dataset cifar10 -adv_type FGSM
+```
 ## Evaluating on PGD White Box Attack
+
 ### 0. Generate original adversarial samples:
 ```
 # model: ResNet, dataset: CIFAR-10, adversarial attack: PGD-20, gpu: 0
