@@ -1,6 +1,6 @@
 # New Adversarial Image Detection Based on Sentiment Analysis
 
-This project is for the paper "[New Adversarial Image Detection Based on Sentiment Analysis]()".Some codes are from [Mahalanobis detector](https://github.com/pokaxpoka/deep_Mahalanobis_detector),
+This project is for the paper "[New Adversarial Image Detection Based on Sentiment Analysis]()".Some codes are from [Mahalanobis detector](https://github.com/pokaxpoka/deep_Mahalanobis_detector).
 
 ## Preliminaries
 It is tested under Ubuntu Linux 18.04 and Python 3.7 environment, and requries Pytorch package to be installed:
